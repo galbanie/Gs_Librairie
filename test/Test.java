@@ -4,23 +4,17 @@
  * and open the template in the editor.
  */
 
-package com.gs.modele.entity;
-
-import com.gs.outils.ContentType;
-
 /**
  *
  * @author galbanie <galbanie at setrukmarcroger@gmail.com>
  */
-public abstract class Contenu extends Entite{
-    protected ContentType mine;
+public class Test {
 
     /**
-     *
-     * @return mine ContentType
+     * @param args the command line arguments
      */
-    public ContentType getMine() {
-        return mine;
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
-
+    
 }

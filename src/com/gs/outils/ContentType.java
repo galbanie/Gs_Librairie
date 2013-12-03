@@ -16,22 +16,22 @@ public enum ContentType {
     * Type Texte
     *
     */
-    STYLE_EN_CASCADE("text/css",".css"),
-    COMMA_SEPARED_VALUE("text/csv",".csv"),
-    HTML("text/html",".html"),
-    PLAIN("text/plain",""),
-    XML("text/xml",".xml"),
+    STYLE_EN_CASCADE("text","text/css",".css"),
+    COMMA_SEPARED_VALUE("text","text/csv",".csv"),
+    HTML("text","text/html",".html"),
+    PLAIN("text","text/plain",""),
+    XML("text","text/xml",".xml"),
     
     /*
     * Type Image
     *
     */
-    GIF("image/gif",".gif"),
-    JPEG("image/jpeg",".jpeg"),
-    PNG("image/png",".png"),
-    TIFF("image/tiff",".tiff"),
-    ICO("image/vnd.microsoft.icon",".ico"),
-    SVG("image/svg+xml",".svg"),
+    GIF("image","image/gif",".gif"),
+    JPEG("image","image/jpeg",".jpeg"),
+    PNG("image","image/png",".png"),
+    TIFF("image","image/tiff",".tiff"),
+    ICO("image","image/vnd.microsoft.icon",".ico"),
+    SVG("image","image/svg+xml",".svg"),
     
     /*
     * Type Video
@@ -39,14 +39,17 @@ public enum ContentType {
     */
     ;
 
-    private ContentType(String mine, String extension) {
+    private ContentType(String type, String mine, String extension) {
+        this.type = type;
         this.mine = mine;
         this.extension = extension;
     }
     
+    private final String type;
     private final String mine;
     private final String extension;
 
+    
     /**
      *
      * @return
@@ -62,6 +65,16 @@ public enum ContentType {
     public String getMine() {
         return mine;
     }
+
+    /**
+     *
+     * @return
+     */
+    public String getType() {
+        return type;
+    }
+    
+    
     
     
 }
