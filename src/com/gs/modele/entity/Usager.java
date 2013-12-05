@@ -11,13 +11,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USAGER")
 public class Usager extends Entite{
-     @Column
+     @Column(unique = true)
      private String identifiant;
      @Column
      private String nom;
      @Column
      private String prenom;
-     @Column
+     @Column(unique = true)
      private String email;
      @Column
      private String password;

@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.concurrent.LinkedTransferQueue;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +27,7 @@ public class Article extends Entite{
     @Column
     private String titre;
     @Column
+    @OneToMany
     private LinkedTransferQueue<Contenu> contenus;
     @Column
     @Temporal(TemporalType.TIMESTAMP)
@@ -32,7 +35,8 @@ public class Article extends Entite{
     @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar modification;
-    @Column
+    @OneToMany
+    @JoinTable(name = "ID_ARTICLE")
     private List<Commentaire> commentaires;
 
     public Article() {
