@@ -6,24 +6,31 @@
 
 package com.gs.modele.entity;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 /**
  *
  * @author galbanie <galbanie at setrukmarcroger@gmail.com>
  */
-public class Text extends Contenu{
+@Entity
+//@DiscriminatorValue("TEXTE")
+public class Texte extends Contenu{
+    @Column
     private String text;
 
     /**
      *
      */
-    public Text() {
+    public Texte() {
     }
 
     /**
      *
      * @param text
      */
-    public Text(String text) {
+    public Texte(String text) {
         this.text = text;
     }
 

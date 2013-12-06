@@ -6,14 +6,25 @@
 
 package com.gs.modele.entity;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 /**
  *
  * @author galbanie <galbanie at setrukmarcroger@gmail.com>
  */
-public class Categorie extends Entite{
-    
+@Entity
+public class Categorie implements Serializable{
+    @Id
     private String nom;
+    @Column
     private String description;
+    @OneToOne
+    @JoinColumn
     private Categorie parent;
 
     public Categorie() {

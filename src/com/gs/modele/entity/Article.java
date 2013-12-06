@@ -6,14 +6,17 @@
 
 package com.gs.modele.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.LinkedTransferQueue;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,13 +25,15 @@ import javax.persistence.TemporalType;
  * @author galbanie <galbanie at setrukmarcroger@gmail.com>
  */
 @Entity
-@Table(name = "ARTICLE")
-public class Article extends Entite{
+public class Article implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @Column
     private String titre;
-    @Column
     @OneToMany
-    private LinkedTransferQueue<Contenu> contenus;
+    @JoinTable(name = "CONTENUS_ARTICLE")
+    private List<Contenu> contenus;
     @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar publication;
@@ -36,7 +41,7 @@ public class Article extends Entite{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar modification;
     @OneToMany
-    @JoinTable(name = "ID_ARTICLE")
+    @JoinTable(name = "COMMENTAIRES")
     private List<Commentaire> commentaires;
 
     public Article() {
@@ -45,7 +50,8 @@ public class Article extends Entite{
 
     public Article(String titre) {
         this.titre = titre;
-        contenus = new LinkedTransferQueue<>();
+        contenus = new LinkedList<>();
+        commentaires = new LinkedList<>();
     }
     
     /**
@@ -68,7 +74,7 @@ public class Article extends Entite{
      *
      * @return
      */
-    public LinkedTransferQueue<Contenu> getContenus() {
+    public List<Contenu> getContenus() {
         return contenus;
     }
 
@@ -77,7 +83,7 @@ public class Article extends Entite{
      * @param contenus
      */
     public void setContenus(List<Contenu> contenus) {
-        this.contenus = (LinkedTransferQueue<Contenu>) contenus;
+        this.contenus = contenus;
     }
 
     /**
@@ -111,7 +117,10 @@ public class Article extends Entite{
     public Calendar getPublication() {
         return publication;
     }
-    
+
+    public Long getId() {
+        return id;
+    }
     
     
 }
