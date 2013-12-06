@@ -1,6 +1,7 @@
 package com.gs.modele.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -131,6 +132,31 @@ public class Usager implements Serializable{
     public void setIdentifiant(String identifiant) {
         this.identifiant = identifiant;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Usager)) {
+            return false;
+        }
+        Usager other = (Usager) object;
+        if((this.identifiant == null && other.identifiant != null) || (this.identifiant != null && !this.identifiant.equals(other.identifiant))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 61 * hash + Objects.hashCode(this.identifiant);
+        hash = 61 * hash + Objects.hashCode(this.nom);
+        hash = 61 * hash + Objects.hashCode(this.prenom);
+        hash = 61 * hash + Objects.hashCode(this.email);
+        hash = 61 * hash + Objects.hashCode(this.password);
+        return hash;
+    }
+    
+    
 
     
 }
