@@ -6,6 +6,7 @@
 
 package com.gs.modele.entity;
 
+import com.gs.classes.Dimension;
 import com.gs.exceptions.ContentTypeInvalide;
 import com.gs.outils.ContentType;
 import javax.persistence.Column;

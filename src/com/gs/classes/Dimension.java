@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.gs.modele.entity;
+package com.gs.classes;
 
 import com.gs.outils.Unite;
 import java.io.Serializable;

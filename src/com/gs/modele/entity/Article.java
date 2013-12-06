@@ -86,6 +86,10 @@ public class Article implements Serializable{
         this.contenus = contenus;
     }
 
+    public void setContenu(Contenu contenu) {
+        this.contenus.add(contenu);
+    }
+    
     /**
      *
      * @return
@@ -102,6 +106,10 @@ public class Article implements Serializable{
         this.commentaires = commentaires;
     }
 
+    public void setCommentaire(Commentaire commentaire) {
+        this.commentaires.add(commentaire);
+    }
+    
     /**
      *
      * @return
