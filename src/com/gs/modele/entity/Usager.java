@@ -5,6 +5,10 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -13,6 +17,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "USAGER")
+@NamedQueries({
+        @NamedQuery(name = "Usager.findAll", query = "SELECT u FROM Usager u"),
+        @NamedQuery(name = "Usager.findByIdentifiant", query = "SELECT u FROM Usager u WHERE u.identifiant = :identifiant"),
+        @NamedQuery(name = "Usager.findByEmail", query = "SELECT u FROM Usager u WHERE u.email = :email")
+})
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usager implements Serializable{
      
      @Id

@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -43,6 +44,8 @@ public class Article implements Serializable{
     @OneToMany
     @JoinTable(name = "COMMENTAIRES")
     private List<Commentaire> commentaires;
+    @OneToOne
+    private Categorie categorie;
 
     public Article() {
         this("Sans Titre");
