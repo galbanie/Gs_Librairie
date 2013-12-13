@@ -16,6 +16,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -26,6 +28,10 @@ import javax.persistence.TemporalType;
  * @author galbanie <galbanie at setrukmarcroger@gmail.com>
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Article.findAll", query = "SELECT a FROM Article a"),
+        @NamedQuery(name = "Article.findByCategorieName", query = "SELECT a FROM Article a WHERE a.categorie.nom = :nom")
+})
 public class Article implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,10 +54,14 @@ public class Article implements Serializable{
     private Categorie categorie;
 
     public Article() {
-        this("Sans Titre");
+        this("Sans Titre",null);
+    }
+    
+    public Article(String titre){
+        this(titre,null);
     }
 
-    public Article(String titre) {
+    public Article(String titre,Categorie categorie) {
         this.titre = titre;
         contenus = new LinkedList<>();
         commentaires = new LinkedList<>();
@@ -132,6 +142,15 @@ public class Article implements Serializable{
     public Long getId() {
         return id;
     }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+    
     
     
 }

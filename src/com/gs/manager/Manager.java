@@ -86,6 +86,12 @@ public class Manager<E> {
         return entity;
     }
     
+    public void createNamedQueryLimit(String str,int startPosition, int length){
+        query = em.createNamedQuery(str)
+        .setFirstResult(startPosition)
+        .setMaxResults(length);
+    }
+    
     public void createQuery(String str){
         query = em.createQuery(str);
     }

@@ -9,6 +9,7 @@ package com.gs.modele.entity;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 /**
  *
@@ -17,7 +18,8 @@ import javax.persistence.Entity;
 @Entity
 //@DiscriminatorValue("TEXTE")
 public class Texte extends Contenu{
-    @Column
+    @Lob
+    @Column(length = 2100)
     private String text;
 
     /**
